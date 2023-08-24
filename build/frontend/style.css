@@ -2,6 +2,22 @@ body {
     margin: 0;
 }
 
+dialog {
+    position: absolute;
+    top: 50%;
+    left: 23%;
+    transform: translate(-10%, -50%);
+    width: 50vw;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+#dialog-close-btn {
+	float: right;
+}
+
 .artist-grid-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -22,8 +38,43 @@ body {
     padding-bottom: 1rem;
 }
 
+/*=== DETAILED VIEW ====*/
+
+.artist-details-container {
+    display: grid;
+    grid-template-areas:
+    'btns btns btns'
+    'image information information';
+}
+
+.artist-details-btns {
+    grid-area: btns;
+    padding-bottom: 10px;
+}
+
+.artist-details-image-container {
+    grid-area: image;
+    padding-right: 10px;
+}
+
+.artist-details-information {
+    grid-area: information
+}
+
+.artist-details-image {
+    height: 25rem;
+}
+
 /*=== OTHER ===*/
 
 .center {
     text-align: center;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.float-right {
+    float: right;
 }
