@@ -1,5 +1,8 @@
-"use strict";
+import { getArtists, artistsList } from "./api.js";
+import { showArtists } from "./displayArtists.js";
 window.addEventListener("load", main);
-function main(event) {
+async function main(event) {
     console.log("App is running");
+    await getArtists();
+    showArtists(artistsList);
 }

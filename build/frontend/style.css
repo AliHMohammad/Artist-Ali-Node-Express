@@ -1,0 +1,29 @@
+body {
+    margin: 0;
+}
+
+.artist-grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem
+}
+
+.artist-grid-item {
+    background-color: green;
+    border: 1px solid black
+}
+
+.artist-grid-item-image {
+    height: 20rem;
+    width: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 1rem;
+}
+
+/*=== OTHER ===*/
+
+.center {
+    text-align: center;
+}
