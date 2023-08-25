@@ -1,3 +1,5 @@
+import { searchArtists } from "./search.js";
+
 
 function openDialogWindow(): void {
     const dialog = document.querySelector("#dialog-window") as HTMLDialogElement;
@@ -15,6 +17,9 @@ function clearDialogWindow(): void {
 
 function initiateEventListeners(): void {
     document.querySelector("#dialog-close-btn")?.addEventListener("click", closeDialogWindow);
+    document.querySelector("#search-bar")?.addEventListener("input", searchArtists);
+    document.querySelector("#filter")?.addEventListener("change", searchArtists);
+    document.querySelector("#sort")?.addEventListener("change", searchArtists);
 }
 
 export {openDialogWindow, closeDialogWindow, clearDialogWindow, initiateEventListeners}

@@ -1,5 +1,6 @@
 import { clearDialogWindow, openDialogWindow } from "./helpers.js";
 function showArtists(artists) {
+    document.querySelector("#artists-output").innerHTML = "";
     for (const artist of artists) {
         showArtist(artist);
     }

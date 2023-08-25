@@ -14,8 +14,28 @@
 
     <main>
 
-        <section>
-            <!--Til søge, filter og sort-->
+        <section id="filter-sort-search" class="center">
+            
+            <label for="search-bar"></label>
+            <input type="text" name="search-bar" id="search-bar" placeholder="Search artist...">
+
+            <label for="filter">Filter:</label>
+            <select name="filter" id="filter">
+                <option value="none">None</option>
+                <option value="female">Female</option>
+                <option value="male">Male</option>
+                <option value="other">Other (gender)</option>
+                <option value="favorites">Favorites</option>
+            </select>
+
+            <label for="sort">Sort:</label>
+            <select name="sort" id="sort">
+                <option value="name">Name (ascending)</option>
+                <option value="name-reverse">Name (descending)</option>
+                <option value="years">Years active (ascending)</option>
+                <option value="years-reverse">Years active (descending)</option>
+            </select>
+
         </section>
 
         <section id="artists-output" class="artist-grid-container">
