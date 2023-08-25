@@ -1,6 +1,7 @@
 [
     {
         "name": "Travis Scott",
+        "gender": "Male",
         "birthdate": "30/04/1991",
         "activeSince": 2008,
         "genres": ["Trap", "Rap", "Hip hop"],
@@ -12,6 +13,7 @@
     },
     {
         "name": "Kanye West",
+        "gender": "Male",
         "birthdate": "08/06/1977",
         "activeSince": 1996,
         "genres": ["Hip-Hop", "Rap", "Gospel"],
@@ -23,6 +25,7 @@
     },
     {
         "name": "Drake",
+        "gender": "Male",
         "birthdate": "24/10/1986",
         "activeSince": 2001,
         "genres": ["Indie", "Folk"],
@@ -34,6 +37,7 @@
     },
     {
         "name": "Future",
+        "gender": "Male",
         "birthdate": "20/11/1983",
         "activeSince": 2003,
         "genres": ["Hip hop", "trap", "mumble rap"],
@@ -45,6 +49,7 @@
     },
     {
         "name": "Ice Spice",
+        "gender": "Female",
         "birthdate": "01/01/2000",
         "activeSince": 2021,
         "genres": ["Hip hop", "Drill"],

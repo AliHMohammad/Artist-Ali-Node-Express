@@ -1,5 +1,6 @@
 interface Artist {
     name: string;
+    gender: string;
     birthdate: string;
     activeSince: number;
     genres: string[];
