@@ -18,9 +18,26 @@ app.get("/", (request: Request, response: Response) => {
 })
 
 app.get("/artists", async (request: Request, response: Response) => {
-    console.log("I am in");
     const artistsAsJSON = await fs.readFile("artists.json");
     const artists: Artist[] = JSON.parse(String(artistsAsJSON));
     console.log(artists);
     response.send(artists);
+})
+
+app.put("/artists/updateFavorite/:id", async (request: Request, response: Response) => {
+    const id = Number(request.params.id);
+    const artistsAsJSON = await fs.readFile("artists.json");
+    const artists: Artist[] = JSON.parse(String(artistsAsJSON));
+
+    const artistToUpdate = artists.find(artist => artist.id === id);
+
+    const newFavoriteValue = request.body;
+    console.log(newFavoriteValue.isFavorite);
+    
+    if (artistToUpdate) {
+        artistToUpdate.isFavorite = newFavoriteValue.isFavorite;
+    }
+
+    fs.writeFile("artists.json", JSON.stringify(artists));
+    response.json(artists);
 })

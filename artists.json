@@ -9,7 +9,8 @@
         "website": "https://www.travisscott.com/",
         "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Travis_Scott_-_Openair_Frauenfeld_2019_08.jpg/800px-Travis_Scott_-_Openair_Frauenfeld_2019_08.jpg",
         "shortDescription": "A dynamic and innovative rapper, singer, and producer, Travis Scott has solidified his status as a force to be reckoned with in the modern hip-hop and rap scene. Renowned for his distinctive auto-tuned vocal style, hypnotic beats, and electrifying live performances, he has pushed creative boundaries with albums like 'Astroworld'. His ability to seamlessly blend elements of trap, psychedelia, and pop culture has earned him a devoted fanbase and widespread critical acclaim.",
-        "isFavorite": false
+        "isFavorite": true,
+        "id": 1
     },
     {
         "name": "Kanye West",
@@ -21,7 +22,8 @@
         "website": "https://twitter.com/kanyewest",
         "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Kanye_West_at_the_2009_Tribeca_Film_Festival_%28crop_2%29.jpg/220px-Kanye_West_at_the_2009_Tribeca_Film_Festival_%28crop_2%29.jpg",
         "shortDescription": "A groundbreaking figure in both music and fashion, Kanye West is a multi-talented artist known for his audacious creativity and controversial public persona. From his early days producing soulful beats for hip-hop legends to his evolution into a genre-defying rapper and producer, West's albums like 'My Beautiful Dark Twisted Fantasy' are celebrated for their artistic innovation. His impact reaches beyond music, as he's made significant contributions to fashion and has consistently challenged conventions with his artistic endeavors.",
-        "isFavorite": false
+        "isFavorite": false,
+        "id": 2
     },
     {
         "name": "Drake",
@@ -33,7 +35,8 @@
         "website": "https://drakerelated.com/rooms/el-chico-studios",
         "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Drake_July_2016.jpg/220px-Drake_July_2016.jpg",
         "shortDescription": "With an innate ability to craft infectious melodies and emotionally resonant lyrics, Drake has risen to become one of the most influential and commercially successful artists of his generation. Blurring the lines between rap and R&B, he's known for hits like 'Hotline Bling' and albums like 'Take Care'. Drake's introspective approach to storytelling and his knack for staying relevant in an ever-changing musical landscape have solidified his position as a chart-topper and trendsetter.",
-        "isFavorite": false
+        "isFavorite": false,
+        "id": 3
     },
     {
         "name": "Future",
@@ -45,7 +48,8 @@
         "website": "http://futurefreebandz.com/",
         "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Future_-_Openair_Frauenfeld_2019_01_%28cropped%29.jpg/220px-Future_-_Openair_Frauenfeld_2019_01_%28cropped%29.jpg",
         "shortDescription": "Pioneering the trap subgenre and shaping the sound of modern hip-hop, Future has built a reputation as a prolific rapper and skilled lyricist. His distinctive raspy voice and hypnotic trap beats have made him a staple in the genre, with albums like 'DS2' garnering widespread acclaim. Future's raw and introspective lyrics often touch on themes of fame, success, and personal struggles, resonating with audiences and influencing a new wave of trap artists.",
-        "isFavorite": false
+        "isFavorite": false,
+        "id": 4
     },
     {
         "name": "Ice Spice",
@@ -57,6 +61,7 @@
         "website": "https://icespicemusic.com/",
         "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Ice_Spice_Next_Wav_by_Keinoflo_uploaded_by_James_Tamim_V4_%28cropped_V2%29_2022.png/220px-Ice_Spice_Next_Wav_by_Keinoflo_uploaded_by_James_Tamim_V4_%28cropped_V2%29_2022.png",
         "shortDescription": "Emerging at the intersection of cultural diversity and musical innovation, Ice Spice is a rising star in the world of electronic music. With roots that span the globe, Ice Spice has taken inspiration from a wide range of musical traditions to create a truly unique sound. By blending elements of EDM, world music, and digital production, Ice Spice's tracks transport listeners to a sonic landscape that's as exhilarating as it is soothing. As an up-and-coming artist, Ice Spice's potential to reshape the electronic music scene is both exciting and promising.",
-        "isFavorite": false
+        "isFavorite": false,
+        "id": 5
     }
 ]

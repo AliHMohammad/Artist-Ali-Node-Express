@@ -1,4 +1,5 @@
 import { clearDialogWindow, openDialogWindow } from "./helpers.js";
+import { addArtistToFavorites, removeArtistFromFavorites, showFavoriteBtn } from "./favorite.js";
 function showArtists(artists) {
     document.querySelector("#artists-output").innerHTML = "";
     for (const artist of artists) {
@@ -7,7 +8,7 @@ function showArtists(artists) {
 }
 function showArtist(artist) {
     const html = /*html*/ `
-        <article class="artist-grid-item">
+        <article class="artist-grid-item" id="artist-${artist.id}">
             <p class="center artist-grid-item-name">${artist.name}</p>
             <img class="center artist-grid-item-image" src="${artist.image}">
             <button class="view-details-btn">View details</button>
@@ -16,9 +17,10 @@ function showArtist(artist) {
         </article>
     `;
     document.querySelector("#artists-output")?.insertAdjacentHTML("beforeend", html);
-    document.querySelector("#artists-output .artist-grid-item:last-child .view-details-btn")?.addEventListener("click", () => showDetailsArtist(artist));
-    document.querySelector("#artists-output .artist-grid-item:last-child .add-to-favorites-btn")?.addEventListener("click", () => addArtistToFavorites(artist));
-    document.querySelector("#artists-output .artist-grid-item:last-child .add-to-favorites-btn")?.addEventListener("click", () => removeArtistFromFavorites(artist));
+    showFavoriteBtn(artist);
+    document.querySelector(`#artist-${artist.id} .view-details-btn`)?.addEventListener("click", () => showDetailsArtist(artist));
+    document.querySelector(`#artist-${artist.id} .add-to-favorites-btn`)?.addEventListener("click", () => addArtistToFavorites(artist, true));
+    document.querySelector(`#artist-${artist.id} .remove-from-favorites-btn`)?.addEventListener("click", () => removeArtistFromFavorites(artist, false));
 }
 function showDetailsArtist(artist) {
     console.log("Show details");
@@ -49,9 +51,5 @@ function showDetailsArtist(artist) {
     `;
     document.querySelector("#dialog-display")?.insertAdjacentHTML("beforeend", html);
     openDialogWindow();
-}
-function addArtistToFavorites(artist) {
-}
-function removeArtistFromFavorites(artist) {
 }
 export { showArtists };
