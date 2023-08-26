@@ -8,23 +8,41 @@ async function getArtists(): Promise<void> {
     artistsList = await(await fetch(`${endpoint}/artists`)).json();
 }
 
-async function updateArtistIsFavorite(artist: Artist, newIsFavoriteValue: boolean) {
-    const objekt = { isFavorite: newIsFavoriteValue }
+async function updateArtistIsFavorite(artist: Artist, newIsFavoriteValue: boolean): Promise<void> {
+    const objekt = { isFavorite: newIsFavoriteValue };
     const objektAsJSON = JSON.stringify(objekt);
-    const promise = await fetch(`${endpoint}/artists/updateFavorite/${artist.id}`, {
+    const response = await fetch(`${endpoint}/artists/updateFavorite/${artist.id}`, {
         method: "PUT",
         body: objektAsJSON,
         headers: { "Content-Type": "application/json" },
     });
 
-    if (promise.ok) {
+    if (response.ok) {
         console.log("Updated Artist isFavorite successfully");
     } else {
         console.error("Something went wrong trying to update isFavorite");
     }
 }
 
+async function createArtist(newArtist: Artist): Promise<void> {
+    const newArtistAsJSON = JSON.stringify(newArtist);
+    const response = await fetch(`${endpoint}/artists`, {
+        method: "POST",
+        body: newArtistAsJSON,
+        headers: { "Content-Type": "application/json" }
+    });
+
+    if (response.ok) {
+        console.log("New artist created successfully");
+        const data = await response.json()
+        console.log(data);
+        
+    } else {
+        console.error("Something went wrong trying to create new artist");
+    }
+}
 
 
 
-export {getArtists, artistsList, updateArtistIsFavorite}
+
+export {getArtists, artistsList, updateArtistIsFavorite, createArtist}

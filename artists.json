@@ -9,7 +9,7 @@
         "website": "https://www.travisscott.com/",
         "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Travis_Scott_-_Openair_Frauenfeld_2019_08.jpg/800px-Travis_Scott_-_Openair_Frauenfeld_2019_08.jpg",
         "shortDescription": "A dynamic and innovative rapper, singer, and producer, Travis Scott has solidified his status as a force to be reckoned with in the modern hip-hop and rap scene. Renowned for his distinctive auto-tuned vocal style, hypnotic beats, and electrifying live performances, he has pushed creative boundaries with albums like 'Astroworld'. His ability to seamlessly blend elements of trap, psychedelia, and pop culture has earned him a devoted fanbase and widespread critical acclaim.",
-        "isFavorite": true,
+        "isFavorite": false,
         "id": 1
     },
     {
@@ -48,7 +48,7 @@
         "website": "http://futurefreebandz.com/",
         "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Future_-_Openair_Frauenfeld_2019_01_%28cropped%29.jpg/220px-Future_-_Openair_Frauenfeld_2019_01_%28cropped%29.jpg",
         "shortDescription": "Pioneering the trap subgenre and shaping the sound of modern hip-hop, Future has built a reputation as a prolific rapper and skilled lyricist. His distinctive raspy voice and hypnotic trap beats have made him a staple in the genre, with albums like 'DS2' garnering widespread acclaim. Future's raw and introspective lyrics often touch on themes of fame, success, and personal struggles, resonating with audiences and influencing a new wave of trap artists.",
-        "isFavorite": false,
+        "isFavorite": true,
         "id": 4
     },
     {
