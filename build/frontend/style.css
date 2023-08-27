@@ -7,7 +7,11 @@ dialog {
     top: 50%;
     left: 23%;
     transform: translate(-10%, -50%);
-    width: 50vw;
+    width: 40vw;
+}
+
+textarea {
+    resize: none;
 }
 
 button:hover {
@@ -73,11 +77,32 @@ button:hover {
     height: 25rem;
 }
 
+/*=== FORM ===*/
+
+#create-artist-form-container {
+    display: grid;
+    
+    grid-template-columns: 0.25fr 1fr;
+    row-gap: 1rem;
+}
+
+.gender-radio-div input, .favorites-radio-div input  {
+    margin-right: 4rem;
+}
+
+.form-submit-btn {
+    padding-top: 15px;
+}
+
+
+
 /*=== OTHER ===*/
 
 .center {
     text-align: center;
 }
+
+
 
 .bold {
     font-weight: bold;

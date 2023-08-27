@@ -41,3 +41,18 @@ app.put("/artists/updateFavorite/:id", async (request: Request, response: Respon
     fs.writeFile("artists.json", JSON.stringify(artists));
     response.json(artists);
 })
+
+
+app.post("/artists", async (request: Request, response: Response) => {
+    const newArtist: Artist = request.body;
+    console.log(newArtist);
+    newArtist.id = new Date().getTime();
+
+    const artistsAsJSON = await fs.readFile("artists.json");
+    const artists: Artist[] = JSON.parse(String(artistsAsJSON));
+
+    artists.push(newArtist);
+
+    fs.writeFile("artists.json", JSON.stringify(artists));
+    response.json(artists);
+})
