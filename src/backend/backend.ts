@@ -68,3 +68,29 @@ app.delete("/artists/:id", async (request: Request, response: Response) => {
     fs.writeFile("artists.json", JSON.stringify(artists));
     response.json(artists);
 })
+
+app.put("/artists/:id", async (request: Request, response: Response) => {
+    const artistsAsJSON = await fs.readFile("artists.json");
+    const artists: Artist[] = JSON.parse(String(artistsAsJSON));
+    const updatedArtist: Artist = request.body;
+
+    const artistToUpdate = artists.find(artist => artist.id === updatedArtist.id);
+
+    console.log(updatedArtist);
+    
+    if (artistToUpdate) {
+        artistToUpdate.name = updatedArtist.name;
+        artistToUpdate.gender = updatedArtist.gender;
+        artistToUpdate.birthdate = updatedArtist.birthdate;
+        artistToUpdate.activeSince = updatedArtist.activeSince;
+        artistToUpdate.genres = updatedArtist.genres;
+        artistToUpdate.labels = updatedArtist.labels;
+        artistToUpdate.website = updatedArtist.website;
+        artistToUpdate.image = updatedArtist.image;
+        artistToUpdate.shortDescription = updatedArtist.shortDescription;
+        artistToUpdate.isFavorite = updatedArtist.isFavorite;
+    }
+
+    fs.writeFile("artists.json", JSON.stringify(artists));
+    response.json(artists);
+})

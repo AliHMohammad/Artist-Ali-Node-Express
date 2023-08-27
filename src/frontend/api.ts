@@ -57,6 +57,23 @@ async function deleteArtist(artist: Artist): Promise<void> {
     }
 }
 
+async function updateArtist(updatedArtist: Artist): Promise<void> {
+    const updatedArtistAsJSON = JSON.stringify(updatedArtist);
+    const response = await fetch(`${endpoint}/artists/${updatedArtist.id}`, {
+        method: "PUT",
+        body: updatedArtistAsJSON,
+        headers: { "Content-Type": "application/json" },
+    });
+
+    if (response.ok) {
+        console.log("New artist updated successfully");
+        const data = await response.json();
+        console.log(data);
+        //Evt opdater artistsList med response.json()
+    } else {
+        console.error("Something went wrong trying to update artist");
+    }
+}
 
 
-export {getArtists, artistsList, updateArtistIsFavorite, createArtist, deleteArtist}
+export {getArtists, artistsList, updateArtistIsFavorite, createArtist, deleteArtist, updateArtist}

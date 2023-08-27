@@ -79,7 +79,7 @@ button:hover {
 
 /*=== FORM ===*/
 
-#create-artist-form-container {
+#create-artist-form-container, #update-artist-form-container {
     display: grid;
     
     grid-template-columns: 0.25fr 1fr;

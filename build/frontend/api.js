@@ -49,4 +49,21 @@ async function deleteArtist(artist) {
         console.error("Something went wrong trying to delete artist");
     }
 }
-export { getArtists, artistsList, updateArtistIsFavorite, createArtist, deleteArtist };
+async function updateArtist(updatedArtist) {
+    const updatedArtistAsJSON = JSON.stringify(updatedArtist);
+    const response = await fetch(`${endpoint}/artists/${updatedArtist.id}`, {
+        method: "PUT",
+        body: updatedArtistAsJSON,
+        headers: { "Content-Type": "application/json" },
+    });
+    if (response.ok) {
+        console.log("New artist updated successfully");
+        const data = await response.json();
+        console.log(data);
+        //Evt opdater artistsList med response.json()
+    }
+    else {
+        console.error("Something went wrong trying to update artist");
+    }
+}
+export { getArtists, artistsList, updateArtistIsFavorite, createArtist, deleteArtist, updateArtist };
