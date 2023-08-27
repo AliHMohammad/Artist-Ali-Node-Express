@@ -36,7 +36,7 @@ async function createArtist(newArtist: Artist): Promise<void> {
         console.log("New artist created successfully");
         const data = await response.json()
         console.log(data);
-        
+        //Evt opdater artistsList med response.body
     } else {
         console.error("Something went wrong trying to create new artist");
     }
