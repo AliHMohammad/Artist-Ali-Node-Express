@@ -36,13 +36,27 @@ async function createArtist(newArtist: Artist): Promise<void> {
         console.log("New artist created successfully");
         const data = await response.json()
         console.log(data);
-        //Evt opdater artistsList med response.body
+        //Evt opdater artistsList med response.json()
     } else {
         console.error("Something went wrong trying to create new artist");
     }
 }
 
+async function deleteArtist(artist: Artist): Promise<void> {
+    const response = await fetch(`${endpoint}/artists/${artist.id}`, {
+        method: "DELETE"
+    });
+
+    if (response.ok) {
+        console.log("New artist deleted successfully");
+        const data = await response.json();
+        console.log(data);
+        //Evt opdater artistsList med response.json()
+    } else {
+        console.error("Something went wrong trying to delete artist");
+    }
+}
 
 
 
-export {getArtists, artistsList, updateArtistIsFavorite, createArtist}
+export {getArtists, artistsList, updateArtistIsFavorite, createArtist, deleteArtist}

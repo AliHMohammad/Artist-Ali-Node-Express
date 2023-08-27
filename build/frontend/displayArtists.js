@@ -1,5 +1,6 @@
 import { clearDialogWindow, openDialogWindow } from "./helpers.js";
 import { addArtistToFavorites, removeArtistFromFavorites, showFavoriteBtn } from "./favorite.js";
+import { deleteArtist } from "./api.js";
 function showArtists(artists) {
     document.querySelector("#artists-output").innerHTML = "";
     for (const artist of artists) {
@@ -50,6 +51,7 @@ function showDetailsArtist(artist) {
         </article>
     `;
     document.querySelector("#dialog-display")?.insertAdjacentHTML("beforeend", html);
+    document.querySelector(".artist-details-delete-artist")?.addEventListener("click", async () => await deleteArtist(artist));
     openDialogWindow();
 }
 export { showArtists };
