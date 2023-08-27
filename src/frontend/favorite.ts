@@ -1,4 +1,4 @@
-import { updateArtistIsFavorite } from "./api.js";
+import { updateArtist } from "./api.js";
 import { Artist } from "./interface.js";
 
 
@@ -18,18 +18,16 @@ async function addArtistToFavorites(artist: Artist, newIsFavoriteValue: boolean)
     console.log(artist);
     updateFavoriteBtn(artist.id, newIsFavoriteValue)
     
-    //Send en PUT afsted. Ved PUT success, så opdater artistList med den nye opdateret UDEN AT KØRE DEN GENNEM searchArtists()
-    await updateArtistIsFavorite(artist, newIsFavoriteValue);
-
-    
+    artist.isFavorite = newIsFavoriteValue;
+    updateArtist(artist);
 }
 
 async function removeArtistFromFavorites(artist: Artist, newIsFavoriteValue: boolean) {
     console.log(artist);
     updateFavoriteBtn(artist.id, newIsFavoriteValue);
 
-    //Send en PUT afsted. Ved PUT success, så opdater artistList med den nye opdateret UDEN AT KØRE DEN GENNEM searchArtists()
-    await updateArtistIsFavorite(artist, newIsFavoriteValue);
+    artist.isFavorite = newIsFavoriteValue;
+    updateArtist(artist);
 }
 
 function updateFavoriteBtn(artistID: number | undefined, newIsFavoriteValue: boolean) {

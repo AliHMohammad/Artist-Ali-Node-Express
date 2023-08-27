@@ -8,22 +8,6 @@ async function getArtists(): Promise<void> {
     artistsList = await(await fetch(`${endpoint}/artists`)).json();
 }
 
-async function updateArtistIsFavorite(artist: Artist, newIsFavoriteValue: boolean): Promise<void> {
-    const objekt = { isFavorite: newIsFavoriteValue };
-    const objektAsJSON = JSON.stringify(objekt);
-    const response = await fetch(`${endpoint}/artists/updateFavorite/${artist.id}`, {
-        method: "PUT",
-        body: objektAsJSON,
-        headers: { "Content-Type": "application/json" },
-    });
-
-    if (response.ok) {
-        console.log("Updated Artist isFavorite successfully");
-    } else {
-        console.error("Something went wrong trying to update isFavorite");
-    }
-}
-
 async function createArtist(newArtist: Artist): Promise<void> {
     const newArtistAsJSON = JSON.stringify(newArtist);
     const response = await fetch(`${endpoint}/artists`, {
@@ -76,4 +60,4 @@ async function updateArtist(updatedArtist: Artist): Promise<void> {
 }
 
 
-export {getArtists, artistsList, updateArtistIsFavorite, createArtist, deleteArtist, updateArtist}
+export {getArtists, artistsList, createArtist, deleteArtist, updateArtist}
