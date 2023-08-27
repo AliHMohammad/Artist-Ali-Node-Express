@@ -56,3 +56,15 @@ app.post("/artists", async (request: Request, response: Response) => {
     fs.writeFile("artists.json", JSON.stringify(artists));
     response.json(artists);
 })
+
+app.delete("/artists/:id", async (request: Request, response: Response) => {
+    const id = Number(request.params.id);
+    const artistsAsJSON = await fs.readFile("artists.json");
+    const artists: Artist[] = JSON.parse(String(artistsAsJSON));
+
+    const index = artists.findIndex((artist) => artist.id === id)
+    artists.splice(index, 1);
+
+    fs.writeFile("artists.json", JSON.stringify(artists));
+    response.json(artists);
+})
