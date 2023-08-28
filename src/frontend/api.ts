@@ -8,6 +8,10 @@ async function getArtists(): Promise<void> {
     artistsList = await(await fetch(`${endpoint}/artists`)).json();
 }
 
+async function getArtist(artistID: number | undefined): Promise<Artist> {
+    return await (await fetch(`${endpoint}/artists/${artistID}`)).json()
+}
+
 async function createArtist(newArtist: Artist): Promise<void> {
     const newArtistAsJSON = JSON.stringify(newArtist);
     const response = await fetch(`${endpoint}/artists`, {
@@ -60,4 +64,4 @@ async function updateArtist(updatedArtist: Artist): Promise<void> {
 }
 
 
-export {getArtists, artistsList, createArtist, deleteArtist, updateArtist}
+export {getArtists, getArtist, artistsList, createArtist, deleteArtist, updateArtist}

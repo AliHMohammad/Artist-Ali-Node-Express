@@ -14,6 +14,13 @@ app.get("/artists", async (request, response) => {
     console.log(artists);
     response.send(artists);
 });
+app.get("/artists/:id", async (request, response) => {
+    const id = Number(request.params.id);
+    const artistsAsJSON = await fs.readFile("artists.json");
+    const artists = JSON.parse(String(artistsAsJSON));
+    const artist = artists.find((artist) => artist.id === id);
+    response.send(artist);
+});
 app.post("/artists", async (request, response) => {
     const newArtist = request.body;
     console.log(newArtist);
