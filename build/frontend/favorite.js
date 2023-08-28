@@ -1,4 +1,4 @@
-import { updateArtistIsFavorite } from "./api.js";
+import { updateArtist } from "./api.js";
 function showFavoriteBtn(artist) {
     console.log(artist.id);
     if (artist.isFavorite) {
@@ -13,14 +13,14 @@ function showFavoriteBtn(artist) {
 async function addArtistToFavorites(artist, newIsFavoriteValue) {
     console.log(artist);
     updateFavoriteBtn(artist.id, newIsFavoriteValue);
-    //Send en PUT afsted. Ved PUT success, så opdater artistList med den nye opdateret UDEN AT KØRE DEN GENNEM searchArtists()
-    await updateArtistIsFavorite(artist, newIsFavoriteValue);
+    artist.isFavorite = newIsFavoriteValue;
+    updateArtist(artist);
 }
 async function removeArtistFromFavorites(artist, newIsFavoriteValue) {
     console.log(artist);
     updateFavoriteBtn(artist.id, newIsFavoriteValue);
-    //Send en PUT afsted. Ved PUT success, så opdater artistList med den nye opdateret UDEN AT KØRE DEN GENNEM searchArtists()
-    await updateArtistIsFavorite(artist, newIsFavoriteValue);
+    artist.isFavorite = newIsFavoriteValue;
+    updateArtist(artist);
 }
 function updateFavoriteBtn(artistID, newIsFavoriteValue) {
     if (newIsFavoriteValue === false) {

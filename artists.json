@@ -63,5 +63,18 @@
         "shortDescription": "Emerging at the intersection of cultural diversity and musical innovation, Ice Spice is a rising star in the world of electronic music. With roots that span the globe, Ice Spice has taken inspiration from a wide range of musical traditions to create a truly unique sound. By blending elements of EDM, world music, and digital production, Ice Spice's tracks transport listeners to a sonic landscape that's as exhilarating as it is soothing. As an up-and-coming artist, Ice Spice's potential to reshape the electronic music scene is both exciting and promising.",
         "isFavorite": false,
         "id": 5
+    },
+    {
+        "name": "Muhammud",
+        "gender": "Other",
+        "birthdate": "12/09/2000",
+        "activeSince": 2001,
+        "genres": ["Hip hop", "Gospel"],
+        "labels": ["Cactus Jack", "GOOD", "Riposte"],
+        "website": "https://www.travisscott.com/",
+        "image": "https://vault.si.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTY5MTQ4MTcwNjE5MDA0Mzc5/1965-0525-muhammad-ali-sonny-liston-ii-001292890jpg.jpg",
+        "shortDescription": "Halløjsa",
+        "isFavorite": true,
+        "id": 1693160927326
     }
 ]

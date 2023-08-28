@@ -8,22 +8,6 @@ async function getArtists(): Promise<void> {
     artistsList = await(await fetch(`${endpoint}/artists`)).json();
 }
 
-async function updateArtistIsFavorite(artist: Artist, newIsFavoriteValue: boolean): Promise<void> {
-    const objekt = { isFavorite: newIsFavoriteValue };
-    const objektAsJSON = JSON.stringify(objekt);
-    const response = await fetch(`${endpoint}/artists/updateFavorite/${artist.id}`, {
-        method: "PUT",
-        body: objektAsJSON,
-        headers: { "Content-Type": "application/json" },
-    });
-
-    if (response.ok) {
-        console.log("Updated Artist isFavorite successfully");
-    } else {
-        console.error("Something went wrong trying to update isFavorite");
-    }
-}
-
 async function createArtist(newArtist: Artist): Promise<void> {
     const newArtistAsJSON = JSON.stringify(newArtist);
     const response = await fetch(`${endpoint}/artists`, {
@@ -57,6 +41,23 @@ async function deleteArtist(artist: Artist): Promise<void> {
     }
 }
 
+async function updateArtist(updatedArtist: Artist): Promise<void> {
+    const updatedArtistAsJSON = JSON.stringify(updatedArtist);
+    const response = await fetch(`${endpoint}/artists/${updatedArtist.id}`, {
+        method: "PUT",
+        body: updatedArtistAsJSON,
+        headers: { "Content-Type": "application/json" },
+    });
+
+    if (response.ok) {
+        console.log("New artist updated successfully");
+        const data = await response.json();
+        console.log(data);
+        //Evt opdater artistsList med response.json()
+    } else {
+        console.error("Something went wrong trying to update artist");
+    }
+}
 
 
-export {getArtists, artistsList, updateArtistIsFavorite, createArtist, deleteArtist}
+export {getArtists, artistsList, createArtist, deleteArtist, updateArtist}

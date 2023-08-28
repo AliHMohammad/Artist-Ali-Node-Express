@@ -3,6 +3,7 @@ import { Artist } from "./interface.js";
 import { clearDialogWindow, openDialogWindow } from "./helpers.js";
 import { addArtistToFavorites, removeArtistFromFavorites, showFavoriteBtn } from "./favorite.js";
 import { deleteArtist } from "./api.js";
+import { displayUpdateArtistForm } from "./updateArtist.js";
 
 function showArtists(artists: Artist[]) {
     document.querySelector("#artists-output")!.innerHTML= "";
@@ -39,7 +40,7 @@ function showDetailsArtist(artist: Artist) {
         <article class="artist-details-container">
 
             <div class="artist-details-btns">
-                <button class="artist-details-edit-artist">Edit artist</button>
+                <button class="artist-details-update-artist">Update artist</button>
                 <button class="artist-details-delete-artist">Delete artist</button>
             </div>
 
@@ -49,6 +50,7 @@ function showDetailsArtist(artist: Artist) {
 
             <div class="artist-details-information">
                 <p class="bold center">${artist.name}</p>
+                <p>Gender: ${artist.gender}</p>
                 <p>Born ${artist.birthdate}</p>
                 <p>Active since ${artist.activeSince}</p>
                 <p>Genres: ${artist.genres.join(", ")}</p>
@@ -63,6 +65,7 @@ function showDetailsArtist(artist: Artist) {
     document.querySelector("#dialog-display")?.insertAdjacentHTML("beforeend", html);
     
     document.querySelector(".artist-details-delete-artist")?.addEventListener("click", async () => await deleteArtist(artist));
+    document.querySelector(".artist-details-update-artist")?.addEventListener("click", () => displayUpdateArtistForm(artist));
     openDialogWindow()
 }
 
