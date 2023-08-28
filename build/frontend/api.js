@@ -3,6 +3,9 @@ let artistsList;
 async function getArtists() {
     artistsList = await (await fetch(`${endpoint}/artists`)).json();
 }
+async function getArtist(artistID) {
+    return await (await fetch(`${endpoint}/artists/${artistID}`)).json();
+}
 async function createArtist(newArtist) {
     const newArtistAsJSON = JSON.stringify(newArtist);
     const response = await fetch(`${endpoint}/artists`, {
@@ -51,4 +54,4 @@ async function updateArtist(updatedArtist) {
         console.error("Something went wrong trying to update artist");
     }
 }
-export { getArtists, artistsList, createArtist, deleteArtist, updateArtist };
+export { getArtists, getArtist, artistsList, createArtist, deleteArtist, updateArtist };

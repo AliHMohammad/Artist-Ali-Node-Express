@@ -1,6 +1,6 @@
 import { clearDialogWindow, openDialogWindow } from "./helpers.js";
 import { addArtistToFavorites, removeArtistFromFavorites, showFavoriteBtn } from "./favorite.js";
-import { deleteArtist } from "./api.js";
+import { deleteArtist, getArtist } from "./api.js";
 import { displayUpdateArtistForm } from "./updateArtist.js";
 function showArtists(artists) {
     document.querySelector("#artists-output").innerHTML = "";
@@ -20,12 +20,13 @@ function showArtist(artist) {
     `;
     document.querySelector("#artists-output")?.insertAdjacentHTML("beforeend", html);
     showFavoriteBtn(artist);
-    document.querySelector(`#artist-${artist.id} .view-details-btn`)?.addEventListener("click", () => showDetailsArtist(artist));
+    document.querySelector(`#artist-${artist.id} .view-details-btn`)?.addEventListener("click", () => showDetailsArtist(artist.id));
     document.querySelector(`#artist-${artist.id} .add-to-favorites-btn`)?.addEventListener("click", () => addArtistToFavorites(artist, true));
     document.querySelector(`#artist-${artist.id} .remove-from-favorites-btn`)?.addEventListener("click", () => removeArtistFromFavorites(artist, false));
 }
-function showDetailsArtist(artist) {
-    console.log("Show details");
+async function showDetailsArtist(artistID) {
+    const artist = await getArtist(artistID);
+    console.log(artist);
     clearDialogWindow();
     const html = /*html*/ `
         <article class="artist-details-container">

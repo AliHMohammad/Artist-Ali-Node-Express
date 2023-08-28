@@ -1,8 +1,7 @@
-
 import { Artist } from "./interface.js";
 import { clearDialogWindow, openDialogWindow } from "./helpers.js";
 import { addArtistToFavorites, removeArtistFromFavorites, showFavoriteBtn } from "./favorite.js";
-import { deleteArtist } from "./api.js";
+import { deleteArtist, getArtist } from "./api.js";
 import { displayUpdateArtistForm } from "./updateArtist.js";
 
 function showArtists(artists: Artist[]) {
@@ -28,13 +27,14 @@ function showArtist(artist: Artist) {
 
     showFavoriteBtn(artist)
 
-    document.querySelector(`#artist-${artist.id} .view-details-btn`)?.addEventListener("click", () => showDetailsArtist(artist));
+    document.querySelector(`#artist-${artist.id} .view-details-btn`)?.addEventListener("click", () => showDetailsArtist(artist.id));
     document.querySelector(`#artist-${artist.id} .add-to-favorites-btn`)?.addEventListener("click", () => addArtistToFavorites(artist, true));
     document.querySelector(`#artist-${artist.id} .remove-from-favorites-btn`)?.addEventListener("click", () => removeArtistFromFavorites(artist, false));
 }
 
-function showDetailsArtist(artist: Artist) {
-    console.log("Show details");
+async function showDetailsArtist(artistID: number | undefined) {
+    const artist = await getArtist(artistID);
+    console.log(artist);
     clearDialogWindow();
     const html = /*html*/ `
         <article class="artist-details-container">
@@ -68,10 +68,6 @@ function showDetailsArtist(artist: Artist) {
     document.querySelector(".artist-details-update-artist")?.addEventListener("click", () => displayUpdateArtistForm(artist));
     openDialogWindow()
 }
-
-
-
-
 
 
 export {showArtists}
