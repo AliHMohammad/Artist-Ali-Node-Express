@@ -14,13 +14,13 @@ async function addArtistToFavorites(artist, newIsFavoriteValue) {
     console.log(artist);
     updateFavoriteBtn(artist.id, newIsFavoriteValue);
     artist.isFavorite = newIsFavoriteValue;
-    updateArtist(artist);
+    await updateArtist(artist);
 }
 async function removeArtistFromFavorites(artist, newIsFavoriteValue) {
     console.log(artist);
     updateFavoriteBtn(artist.id, newIsFavoriteValue);
     artist.isFavorite = newIsFavoriteValue;
-    updateArtist(artist);
+    await updateArtist(artist);
 }
 function updateFavoriteBtn(artistID, newIsFavoriteValue) {
     if (newIsFavoriteValue === false) {
