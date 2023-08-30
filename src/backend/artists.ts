@@ -11,16 +11,6 @@ router.get("/", async (request: Request, response: Response) => {
     response.send(artists);
 });
 
-router.get("/:id", async (request: Request, response: Response) => {
-    const id = Number(request.params.id);
-    const artistsAsJSON = await fs.readFile("artists.json");
-    const artists: Artist[] = JSON.parse(String(artistsAsJSON));
-
-    const artist = artists.find((artist) => artist.id === id);
-
-    response.send(artist);
-});
-
 router.post("/", async (request: Request, response: Response) => {
     const newArtist: Artist = request.body;
     console.log(newArtist);
@@ -33,6 +23,16 @@ router.post("/", async (request: Request, response: Response) => {
 
     fs.writeFile("artists.json", JSON.stringify(artists));
     response.json(artists);
+});
+
+router.get("/:id", async (request: Request, response: Response) => {
+    const id = Number(request.params.id);
+    const artistsAsJSON = await fs.readFile("artists.json");
+    const artists: Artist[] = JSON.parse(String(artistsAsJSON));
+
+    const artist = artists.find((artist) => artist.id === id);
+
+    response.send(artist);
 });
 
 router.delete("/:id", async (request: Request, response: Response) => {
