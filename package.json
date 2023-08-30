@@ -2,10 +2,10 @@
     "name": "artist-ali-node-express",
     "version": "1.0.0",
     "description": "",
-    "main": "index.js",
+    "main": "main.js",
     "type": "module",
     "scripts": {
-        "dev": "concurrently \"tsc -w\" \"nodemon build/backend/backend.js\""
+        "dev": "concurrently \"tsc -w\" \"nodemon build/backend/server.js\""
     },
     "keywords": [],
     "author": "",
