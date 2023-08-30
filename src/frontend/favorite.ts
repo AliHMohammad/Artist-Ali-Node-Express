@@ -19,7 +19,7 @@ async function addArtistToFavorites(artist: Artist, newIsFavoriteValue: boolean)
     updateFavoriteBtn(artist.id, newIsFavoriteValue)
     
     artist.isFavorite = newIsFavoriteValue;
-    updateArtist(artist);
+    await updateArtist(artist);
 }
 
 async function removeArtistFromFavorites(artist: Artist, newIsFavoriteValue: boolean) {
@@ -27,7 +27,7 @@ async function removeArtistFromFavorites(artist: Artist, newIsFavoriteValue: boo
     updateFavoriteBtn(artist.id, newIsFavoriteValue);
 
     artist.isFavorite = newIsFavoriteValue;
-    updateArtist(artist);
+    await updateArtist(artist);
 }
 
 function updateFavoriteBtn(artistID: number | undefined, newIsFavoriteValue: boolean) {

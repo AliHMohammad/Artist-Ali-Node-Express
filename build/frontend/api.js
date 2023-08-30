@@ -15,9 +15,7 @@ async function createArtist(newArtist) {
     });
     if (response.ok) {
         console.log("New artist created successfully");
-        const data = await response.json();
-        console.log(data);
-        //Evt opdater artistsList med response.json()
+        artistsList = await response.json();
     }
     else {
         console.error("Something went wrong trying to create new artist");
@@ -29,9 +27,7 @@ async function deleteArtist(artist) {
     });
     if (response.ok) {
         console.log("New artist deleted successfully");
-        const data = await response.json();
-        console.log(data);
-        //Evt opdater artistsList med response.json()
+        artistsList = await response.json();
     }
     else {
         console.error("Something went wrong trying to delete artist");
@@ -46,9 +42,7 @@ async function updateArtist(updatedArtist) {
     });
     if (response.ok) {
         console.log("New artist updated successfully");
-        const data = await response.json();
-        console.log(data);
-        //Evt opdater artistsList med response.json()
+        artistsList = await response.json();
     }
     else {
         console.error("Something went wrong trying to update artist");
