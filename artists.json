@@ -65,8 +65,8 @@
         "id": 5
     },
     {
-        "name": "Ali",
-        "gender": "Female",
+        "name": "Muhammed Ali",
+        "gender": "Male",
         "birthdate": "12/09/2000",
         "activeSince": 2001,
         "genres": ["Hip hop", "Gospel"],
@@ -74,7 +74,7 @@
         "website": "https://www.travisscott.com/",
         "image": "https://vault.si.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTY5MTQ4MTcwNjE5MDA0Mzc5/1965-0525-muhammad-ali-sonny-liston-ii-001292890jpg.jpg",
         "shortDescription": "Halløjsa",
-        "isFavorite": false,
+        "isFavorite": true,
         "id": 1693160927326
     }
 ]
