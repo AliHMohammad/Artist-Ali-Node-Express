@@ -1,13 +1,25 @@
 body {
     margin: 0;
+    background-image: url(./img/wallpaper.jpg);
+    
+    background-size:cover
 }
 
 dialog {
     max-width: 55%;
+    background-color: rgb(173, 173, 173);
 }
 
 textarea {
     resize: none;
+}
+
+footer h2 {
+    margin: 0;
+    margin-top: 1rem;
+    padding: 1.5rem;
+
+    background-color: rgb(55, 55, 55);
 }
 
 button:hover {
@@ -34,7 +46,7 @@ button:hover {
 }
 
 .artist-grid-item {
-    background-color: green;
+    background-color: rgba(128, 128, 128, 0.697);
     border: 1px solid black;
 }
 
