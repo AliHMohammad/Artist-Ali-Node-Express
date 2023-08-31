@@ -1,70 +1,44 @@
-import express, {Express, Request, Response} from "express";
+import express from "express";
 import fs from "fs/promises";
-import cors from "cors";
-import { Artist } from "../frontend/interface";
-
-const app: Express = express();
-const port = 3333;
-
-app.use(express.json());
-app.use(cors());
-
-app.listen(port, () => {
-    console.log(`App is running on localhost:${port}`);
-})
-
-app.get("/artists", async (request: Request, response: Response) => {
+const router = express.Router();
+router.get("/", async (request, response) => {
     const artistsAsJSON = await fs.readFile("artists.json");
-    const artists: Artist[] = JSON.parse(String(artistsAsJSON));
+    const artists = JSON.parse(String(artistsAsJSON));
     console.log(artists);
     response.send(artists);
-})
-
-app.get("/artists/:id", async (request: Request, response: Response) => {
+});
+router.get("/:id", async (request, response) => {
     const id = Number(request.params.id);
     const artistsAsJSON = await fs.readFile("artists.json");
-    const artists: Artist[] = JSON.parse(String(artistsAsJSON));
-    
-    const artist = artists.find((artist) => artist.id === id)
-
+    const artists = JSON.parse(String(artistsAsJSON));
+    const artist = artists.find((artist) => artist.id === id);
     response.send(artist);
-})
-
-app.post("/artists", async (request: Request, response: Response) => {
-    const newArtist: Artist = request.body;
+});
+router.post("/", async (request, response) => {
+    const newArtist = request.body;
     console.log(newArtist);
     newArtist.id = new Date().getTime();
-
     const artistsAsJSON = await fs.readFile("artists.json");
-    const artists: Artist[] = JSON.parse(String(artistsAsJSON));
-
+    const artists = JSON.parse(String(artistsAsJSON));
     artists.push(newArtist);
-
     fs.writeFile("artists.json", JSON.stringify(artists));
     response.json(artists);
-})
-
-app.delete("/artists/:id", async (request: Request, response: Response) => {
+});
+router.delete("/:id", async (request, response) => {
     const id = Number(request.params.id);
     const artistsAsJSON = await fs.readFile("artists.json");
-    const artists: Artist[] = JSON.parse(String(artistsAsJSON));
-
-    const index = artists.findIndex((artist) => artist.id === id)
+    const artists = JSON.parse(String(artistsAsJSON));
+    const index = artists.findIndex((artist) => artist.id === id);
     artists.splice(index, 1);
-
     fs.writeFile("artists.json", JSON.stringify(artists));
     response.json(artists);
-})
-
-app.put("/artists/:id", async (request: Request, response: Response) => {
+});
+router.put("/:id", async (request, response) => {
     const artistsAsJSON = await fs.readFile("artists.json");
-    const artists: Artist[] = JSON.parse(String(artistsAsJSON));
-    const updatedArtist: Artist = request.body;
-
-    const artistToUpdate = artists.find(artist => artist.id === updatedArtist.id);
-
+    const artists = JSON.parse(String(artistsAsJSON));
+    const updatedArtist = request.body;
+    const artistToUpdate = artists.find((artist) => artist.id === updatedArtist.id);
     console.log(updatedArtist);
-    
     if (artistToUpdate) {
         artistToUpdate.name = updatedArtist.name;
         artistToUpdate.gender = updatedArtist.gender;
@@ -77,7 +51,7 @@ app.put("/artists/:id", async (request: Request, response: Response) => {
         artistToUpdate.shortDescription = updatedArtist.shortDescription;
         artistToUpdate.isFavorite = updatedArtist.isFavorite;
     }
-
     fs.writeFile("artists.json", JSON.stringify(artists));
     response.json(artists);
-})
+});
+export { router };
