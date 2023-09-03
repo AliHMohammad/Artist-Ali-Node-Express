@@ -6,7 +6,8 @@ let artistID: number | undefined;
 
 
 function displayUpdateArtistForm(artist: Artist): void {
-    clearDialogWindow()
+    //Displays an update form in html.
+    clearDialogWindow();
     artistID = artist.id;
     const html = /*html*/ `
         <h2 class="center">Update Artist</h2>
@@ -64,13 +65,15 @@ function displayUpdateArtistForm(artist: Artist): void {
     `;
 
     document.querySelector("#dialog-display")?.insertAdjacentHTML("beforeend", html);
-    radioCheckCorrectGender(artist.gender)
-    radioCheckCorrectIsFavorite(artist.isFavorite)
+    radioCheckCorrectGender(artist.gender);
+    radioCheckCorrectIsFavorite(artist.isFavorite);
 
     document.querySelector("#update-artist-form")?.addEventListener("submit", submitUpdateArtistForm);
 }
 
 async function submitUpdateArtistForm(event: Event): Promise<void> {
+    //After submitting the update artist form, gather the input value in a updatedArtist object.
+    //Send updatedArtist in the updateArtist PUT-request
     event.preventDefault();
 
     const form = event.target as HTMLFormElement;
@@ -86,7 +89,7 @@ async function submitUpdateArtistForm(event: Event): Promise<void> {
         image: form.image.value,
         shortDescription: form.description.value,
         isFavorite: Boolean(form.favorite.value),
-        id: artistID
+        id: artistID,
     };
 
     console.log(updatedArtist);
@@ -95,7 +98,7 @@ async function submitUpdateArtistForm(event: Event): Promise<void> {
 }
 
 function radioCheckCorrectGender(artistGender: string): void {
-    
+    //Makes sure to check the correct gender radio in accordance with the object-to-update property
     if (artistGender.toLowerCase() === "male") {
         const maleRadio = document.querySelector("#male") as HTMLInputElement;
         maleRadio.checked = true;
@@ -109,7 +112,7 @@ function radioCheckCorrectGender(artistGender: string): void {
 }
 
 function radioCheckCorrectIsFavorite(artistIsFavorite: boolean): void {
-
+    //Makes sure to check the correct IsFavorite radio in accordance with the object-to-update property
     if (artistIsFavorite) {
         const yesRadio = document.querySelector("#yes") as HTMLInputElement;
         yesRadio.checked = true;

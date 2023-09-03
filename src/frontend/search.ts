@@ -3,23 +3,27 @@ import { Artist } from "./interface.js";
 import { showArtists } from "./displayArtists.js";
 
 function searchArtists(): void {
+    //Filters by search-value
     console.log("Searching...");
     const searchBar = document.querySelector("#search-bar") as HTMLInputElement;
     const filterBar = document.querySelector("#filter") as HTMLSelectElement;
-    
+
     const searchValue = searchBar.value;
     const filterValue = filterBar.value;
-    
+
     const searchedArtists: Artist[] = artistsList.filter((artist) => artist.name.toLowerCase().includes(searchValue.toLowerCase()));
-    
+
+    //If a filter is applied, go to the filer
+    //Else, skip to sorting
     if (filterValue !== "none") {
-        filterArtists(searchedArtists)
+        filterArtists(searchedArtists);
     } else {
-        sortArtists(searchedArtists)
+        sortArtists(searchedArtists);
     }
 }
 
 function filterArtists(artistsToFilter: Artist[]) {
+    //Filters by the filter-value
     const filterBar = document.querySelector("#filter") as HTMLSelectElement;
     const filterValue = filterBar.value;
 
@@ -39,6 +43,7 @@ function filter(artistsToFilter: Artist[], filterValue: string): Artist[] {
 }
 
 function sortArtists(artistsToSort: Artist[]) {
+    //Sorts by the sort-value
     const sortBar = document.querySelector("#sort") as HTMLSelectElement;
     let sortValue = sortBar.value;
     let isToReverse = false;
@@ -54,6 +59,7 @@ function sortArtists(artistsToSort: Artist[]) {
         sortedArtists.reverse();
     }
 
+    //The result-arr is then displayed in the html
     showArtists(sortedArtists);
 }
 

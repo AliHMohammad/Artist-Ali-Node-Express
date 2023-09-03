@@ -5,6 +5,7 @@ import { Artist } from "../frontend/interface";
 const router = express.Router();
 
 router.get("/", async (request: Request, response: Response) => {
+    //Get all artists from artists.json
     const artistsAsJSON = await fs.readFile("artists.json");
     const artists: Artist[] = JSON.parse(String(artistsAsJSON));
     console.log(artists);
@@ -12,6 +13,7 @@ router.get("/", async (request: Request, response: Response) => {
 });
 
 router.post("/", async (request: Request, response: Response) => {
+    //Create a artist in artists.json
     const newArtist: Artist = request.body;
     console.log(newArtist);
     newArtist.id = new Date().getTime();
@@ -26,6 +28,7 @@ router.post("/", async (request: Request, response: Response) => {
 });
 
 router.get("/:id", async (request: Request, response: Response) => {
+    //Get a single artist by id from artists.json
     const id = Number(request.params.id);
     const artistsAsJSON = await fs.readFile("artists.json");
     const artists: Artist[] = JSON.parse(String(artistsAsJSON));
@@ -36,6 +39,7 @@ router.get("/:id", async (request: Request, response: Response) => {
 });
 
 router.delete("/:id", async (request: Request, response: Response) => {
+    //Delete a single artist by id from artists.json
     const id = Number(request.params.id);
     const artistsAsJSON = await fs.readFile("artists.json");
     const artists: Artist[] = JSON.parse(String(artistsAsJSON));
@@ -48,6 +52,7 @@ router.delete("/:id", async (request: Request, response: Response) => {
 });
 
 router.put("/:id", async (request: Request, response: Response) => {
+    //Update a single artist by id from artists.json
     const artistsAsJSON = await fs.readFile("artists.json");
     const artists: Artist[] = JSON.parse(String(artistsAsJSON));
     const updatedArtist: Artist = request.body;

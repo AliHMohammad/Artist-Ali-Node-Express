@@ -7,12 +7,14 @@ import { displayUpdateArtistForm } from "./updateArtist.js";
 function showArtists(artists: Artist[]) {
     document.querySelector("#artists-output")!.innerHTML= "";
 
+    //Loop through artists array.
     for (const artist of artists) {
         showArtist(artist);
     }
 }
 
 function showArtist(artist: Artist) {
+    //Create a grid-item for artist in html
     const html = /*html*/ `
         <article class="artist-grid-item" id="artist-${artist.id}">
             <p class="center artist-grid-item-name">${artist.name}</p>
@@ -25,6 +27,8 @@ function showArtist(artist: Artist) {
 
     document.querySelector("#artists-output")?.insertAdjacentHTML("beforeend", html);
 
+    //Displays the correct favorite button in accordance with the artist.isFavorite property.
+    //If artist.isFavorite is false, then "Add to favorites"-button is displayed and vice versa.
     showFavoriteBtn(artist)
 
     document.querySelector(`#artist-${artist.id} .view-details-btn`)?.addEventListener("click", () => showDetailsArtist(artist.id));
@@ -33,6 +37,8 @@ function showArtist(artist: Artist) {
 }
 
 async function showDetailsArtist(artistID: number | undefined) {
+    //Fetch artist based on the artistID recieved.
+    //The now fetched artist is used to populate the detailed view dialog.
     const artist = await getArtist(artistID);
     console.log(artist);
     clearDialogWindow();
@@ -63,10 +69,12 @@ async function showDetailsArtist(artistID: number | undefined) {
     `;
 
     document.querySelector("#dialog-display")?.insertAdjacentHTML("beforeend", html);
-    
+
+    //Send artist to DELETE-request when clicking on "delete artist"-button
     document.querySelector(".artist-details-delete-artist")?.addEventListener("click", async () => await deleteArtist(artist));
+
     document.querySelector(".artist-details-update-artist")?.addEventListener("click", () => displayUpdateArtistForm(artist));
-    openDialogWindow()
+    openDialogWindow();
 }
 
 

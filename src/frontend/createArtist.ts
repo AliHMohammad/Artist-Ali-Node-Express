@@ -4,7 +4,8 @@ import { Artist } from "./interface.js";
 
 
 function displayCreateArtistForm(event: Event): void {
-    clearDialogWindow()
+    //Displays a create form in html.
+    clearDialogWindow();
     const html = /*html*/ `
         <h2 class="center">Create Artist</h2>
         <form id="create-artist-form">
@@ -62,10 +63,12 @@ function displayCreateArtistForm(event: Event): void {
 
     document.querySelector("#dialog-display")?.insertAdjacentHTML("beforeend", html);
     document.querySelector("#create-artist-form")?.addEventListener("submit", submitCreateArtistForm);
-    openDialogWindow()
+    openDialogWindow();
 }
 
 async function submitCreateArtistForm(event: Event) {
+    //After submitting the create artist form, gather the input value in a newArtist object.
+    //Send newArtist in the createArtist POST-request
     event.preventDefault();
 
     const form = event.target as HTMLFormElement;
