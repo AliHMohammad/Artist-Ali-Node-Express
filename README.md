@@ -12,7 +12,7 @@ npm install
 
 ## Usage
 
-For at anvende app'en skal serveren naturligvis køre. Skriv følgende i git bash for at køre 'server'-script:
+For at anvende app'en skal serveren køre. Skriv nedenstående i git bash for at køre 'server'-script:
 
 ```bash
 npm run server
