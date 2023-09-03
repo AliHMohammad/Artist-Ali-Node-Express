@@ -4,11 +4,13 @@ import { deleteArtist, getArtist } from "./api.js";
 import { displayUpdateArtistForm } from "./updateArtist.js";
 function showArtists(artists) {
     document.querySelector("#artists-output").innerHTML = "";
+    //Loop through artists array.
     for (const artist of artists) {
         showArtist(artist);
     }
 }
 function showArtist(artist) {
+    //Create a grid-item for artist in html
     const html = /*html*/ `
         <article class="artist-grid-item" id="artist-${artist.id}">
             <p class="center artist-grid-item-name">${artist.name}</p>
@@ -19,12 +21,16 @@ function showArtist(artist) {
         </article>
     `;
     document.querySelector("#artists-output")?.insertAdjacentHTML("beforeend", html);
+    //Displays the correct favorite button in accordance with the artist.isFavorite property.
+    //If artist.isFavorite is false, then "Add to favorites"-button is displayed and vice versa.
     showFavoriteBtn(artist);
     document.querySelector(`#artist-${artist.id} .view-details-btn`)?.addEventListener("click", () => showDetailsArtist(artist.id));
     document.querySelector(`#artist-${artist.id} .add-to-favorites-btn`)?.addEventListener("click", () => addArtistToFavorites(artist, true));
     document.querySelector(`#artist-${artist.id} .remove-from-favorites-btn`)?.addEventListener("click", () => removeArtistFromFavorites(artist, false));
 }
 async function showDetailsArtist(artistID) {
+    //Fetch artist based on the artistID recieved.
+    //The now fetched artist is used to populate the detailed view dialog.
     const artist = await getArtist(artistID);
     console.log(artist);
     clearDialogWindow();
@@ -54,6 +60,7 @@ async function showDetailsArtist(artistID) {
         </article>
     `;
     document.querySelector("#dialog-display")?.insertAdjacentHTML("beforeend", html);
+    //Send artist to DELETE-request when clicking on "delete artist"-button
     document.querySelector(".artist-details-delete-artist")?.addEventListener("click", async () => await deleteArtist(artist));
     document.querySelector(".artist-details-update-artist")?.addEventListener("click", () => displayUpdateArtistForm(artist));
     openDialogWindow();

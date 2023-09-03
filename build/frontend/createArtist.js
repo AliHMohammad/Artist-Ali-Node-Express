@@ -1,6 +1,7 @@
 import { createArtist } from "./api.js";
 import { clearDialogWindow, openDialogWindow } from "./helpers.js";
 function displayCreateArtistForm(event) {
+    //Displays a create form in html.
     clearDialogWindow();
     const html = /*html*/ `
         <h2 class="center">Create Artist</h2>
@@ -61,6 +62,8 @@ function displayCreateArtistForm(event) {
     openDialogWindow();
 }
 async function submitCreateArtistForm(event) {
+    //After submitting the create artist form, gather the input value in a newArtist object.
+    //Send newArtist in the createArtist POST-request
     event.preventDefault();
     const form = event.target;
     const newArtist = {

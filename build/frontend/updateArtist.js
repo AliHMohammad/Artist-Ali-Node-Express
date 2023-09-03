@@ -2,6 +2,7 @@ import { updateArtist } from "./api.js";
 import { clearDialogWindow } from "./helpers.js";
 let artistID;
 function displayUpdateArtistForm(artist) {
+    //Displays an update form in html.
     clearDialogWindow();
     artistID = artist.id;
     const html = /*html*/ `
@@ -64,6 +65,8 @@ function displayUpdateArtistForm(artist) {
     document.querySelector("#update-artist-form")?.addEventListener("submit", submitUpdateArtistForm);
 }
 async function submitUpdateArtistForm(event) {
+    //After submitting the update artist form, gather the input value in a updatedArtist object.
+    //Send updatedArtist in the updateArtist PUT-request
     event.preventDefault();
     const form = event.target;
     const updatedArtist = {
@@ -77,12 +80,13 @@ async function submitUpdateArtistForm(event) {
         image: form.image.value,
         shortDescription: form.description.value,
         isFavorite: Boolean(form.favorite.value),
-        id: artistID
+        id: artistID,
     };
     console.log(updatedArtist);
     await updateArtist(updatedArtist);
 }
 function radioCheckCorrectGender(artistGender) {
+    //Makes sure to check the correct gender radio in accordance with the object-to-update property
     if (artistGender.toLowerCase() === "male") {
         const maleRadio = document.querySelector("#male");
         maleRadio.checked = true;
@@ -97,6 +101,7 @@ function radioCheckCorrectGender(artistGender) {
     }
 }
 function radioCheckCorrectIsFavorite(artistIsFavorite) {
+    //Makes sure to check the correct IsFavorite radio in accordance with the object-to-update property
     if (artistIsFavorite) {
         const yesRadio = document.querySelector("#yes");
         yesRadio.checked = true;

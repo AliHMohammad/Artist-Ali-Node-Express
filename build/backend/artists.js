@@ -2,12 +2,14 @@ import express from "express";
 import fs from "fs/promises";
 const router = express.Router();
 router.get("/", async (request, response) => {
+    //Get all artists from artists.json
     const artistsAsJSON = await fs.readFile("artists.json");
     const artists = JSON.parse(String(artistsAsJSON));
     console.log(artists);
     response.send(artists);
 });
 router.post("/", async (request, response) => {
+    //Create a artist in artists.json
     const newArtist = request.body;
     console.log(newArtist);
     newArtist.id = new Date().getTime();
@@ -18,6 +20,7 @@ router.post("/", async (request, response) => {
     response.json(artists);
 });
 router.get("/:id", async (request, response) => {
+    //Get a single artist by id from artists.json
     const id = Number(request.params.id);
     const artistsAsJSON = await fs.readFile("artists.json");
     const artists = JSON.parse(String(artistsAsJSON));
@@ -25,6 +28,7 @@ router.get("/:id", async (request, response) => {
     response.send(artist);
 });
 router.delete("/:id", async (request, response) => {
+    //Delete a single artist by id from artists.json
     const id = Number(request.params.id);
     const artistsAsJSON = await fs.readFile("artists.json");
     const artists = JSON.parse(String(artistsAsJSON));
@@ -34,6 +38,7 @@ router.delete("/:id", async (request, response) => {
     response.json(artists);
 });
 router.put("/:id", async (request, response) => {
+    //Update a single artist by id from artists.json
     const artistsAsJSON = await fs.readFile("artists.json");
     const artists = JSON.parse(String(artistsAsJSON));
     const updatedArtist = request.body;
