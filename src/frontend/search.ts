@@ -22,7 +22,7 @@ function searchArtists(): void {
     }
 }
 
-function filterArtists(artistsToFilter: Artist[]) {
+function filterArtists(artistsToFilter: Artist[]): void {
     //Filters by the filter-value
     const filterBar = document.querySelector("#filter") as HTMLSelectElement;
     const filterValue = filterBar.value;
@@ -42,7 +42,7 @@ function filter(artistsToFilter: Artist[], filterValue: string): Artist[] {
     }
 }
 
-function sortArtists(artistsToSort: Artist[]) {
+function sortArtists(artistsToSort: Artist[]): void {
     //Sorts by the sort-value
     const sortBar = document.querySelector("#sort") as HTMLSelectElement;
     let sortValue = sortBar.value;
@@ -66,7 +66,7 @@ function sortArtists(artistsToSort: Artist[]) {
 function sort(artistsToSort: Artist[], sortValue: string): Artist[] {
 
     if (sortValue === "name") {
-        return artistsToSort.toSorted((a, b) => a.name.localeCompare(b.name))
+        return artistsToSort.toSorted((a, b) => a.name.localeCompare(b.name));
     } else {
         return artistsToSort.toSorted((a, b) => a.activeSince - b.activeSince);
     }

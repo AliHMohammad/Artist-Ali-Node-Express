@@ -4,7 +4,7 @@ import { addArtistToFavorites, removeArtistFromFavorites, showFavoriteBtn } from
 import { deleteArtist, getArtist } from "./api.js";
 import { displayUpdateArtistForm } from "./updateArtist.js";
 
-function showArtists(artists: Artist[]) {
+function showArtists(artists: Artist[]): void {
     document.querySelector("#artists-output")!.innerHTML= "";
 
     //Loop through artists array.
@@ -13,7 +13,7 @@ function showArtists(artists: Artist[]) {
     }
 }
 
-function showArtist(artist: Artist) {
+function showArtist(artist: Artist): void {
     //Create a grid-item for artist in html
     const html = /*html*/ `
         <article class="artist-grid-item" id="artist-${artist.id}">
@@ -36,7 +36,7 @@ function showArtist(artist: Artist) {
     document.querySelector(`#artist-${artist.id} .remove-from-favorites-btn`)?.addEventListener("click", () => removeArtistFromFavorites(artist, false));
 }
 
-async function showDetailsArtist(artistID: number | undefined) {
+async function showDetailsArtist(artistID: number | undefined): Promise<void> {
     //Fetch artist based on the artistID recieved.
     //The now fetched artist is used to populate the detailed view dialog.
     const artist = await getArtist(artistID);

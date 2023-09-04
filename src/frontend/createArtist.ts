@@ -66,7 +66,7 @@ function displayCreateArtistForm(event: Event): void {
     openDialogWindow();
 }
 
-async function submitCreateArtistForm(event: Event) {
+async function submitCreateArtistForm(event: Event): Promise<void> {
     //After submitting the create artist form, gather the input value in a newArtist object.
     //Send newArtist in the createArtist POST-request
     event.preventDefault();
