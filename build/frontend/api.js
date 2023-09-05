@@ -4,7 +4,13 @@ async function getArtists() {
     artistsList = await (await fetch(`${endpoint}/artists`)).json();
 }
 async function getArtist(artistID) {
-    return await (await fetch(`${endpoint}/artists/${artistID}`)).json();
+    const response = await fetch(`${endpoint}/artists/${artistID}`);
+    if (response.ok) {
+        return await response.json();
+    }
+    else {
+        console.log(await response.json());
+    }
 }
 async function createArtist(newArtist) {
     const newArtistAsJSON = JSON.stringify(newArtist);
@@ -18,7 +24,8 @@ async function createArtist(newArtist) {
         artistsList = await response.json();
     }
     else {
-        console.error("Something went wrong trying to create new artist");
+        const errorMessage = await response.json();
+        console.error(errorMessage);
     }
 }
 async function deleteArtist(artist) {
@@ -30,7 +37,8 @@ async function deleteArtist(artist) {
         artistsList = await response.json();
     }
     else {
-        console.error("Something went wrong trying to delete artist");
+        const errorMessage = await response.json();
+        console.error(errorMessage);
     }
 }
 async function updateArtist(updatedArtist) {
@@ -45,7 +53,8 @@ async function updateArtist(updatedArtist) {
         artistsList = await response.json();
     }
     else {
-        console.error("Something went wrong trying to update artist");
+        const errorMessage = await response.json();
+        console.error(errorMessage);
     }
 }
 export { getArtists, getArtist, artistsList, createArtist, deleteArtist, updateArtist };

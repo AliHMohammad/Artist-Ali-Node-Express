@@ -8,8 +8,14 @@ async function getArtists(): Promise<void> {
     artistsList = await(await fetch(`${endpoint}/artists`)).json();
 }
 
-async function getArtist(artistID: number | undefined): Promise<Artist> {
-    return await (await fetch(`${endpoint}/artists/${artistID}`)).json()
+async function getArtist(artistID: number | undefined): Promise<Artist | void> {
+    const response = await fetch(`${endpoint}/artists/${artistID}`);
+
+    if (response.ok) {
+        return await response.json();
+    } else {
+        console.log(await response.json());
+    }
 }
 
 async function createArtist(newArtist: Artist): Promise<void> {
@@ -24,7 +30,8 @@ async function createArtist(newArtist: Artist): Promise<void> {
         console.log("New artist created successfully");
         artistsList = await response.json()
     } else {
-        console.error("Something went wrong trying to create new artist");
+        const errorMessage = await response.json()
+        console.error(errorMessage);
     }
 }
 
@@ -37,7 +44,8 @@ async function deleteArtist(artist: Artist): Promise<void> {
         console.log("New artist deleted successfully");
         artistsList = await response.json();
     } else {
-        console.error("Something went wrong trying to delete artist");
+        const errorMessage = await response.json();
+        console.error(errorMessage);
     }
 }
 
@@ -53,7 +61,8 @@ async function updateArtist(updatedArtist: Artist): Promise<void> {
         console.log("New artist updated successfully");
         artistsList = await response.json();
     } else {
-        console.error("Something went wrong trying to update artist");
+        const errorMessage = await response.json();
+        console.error(errorMessage);
     }
 }
 
