@@ -11,25 +11,26 @@ function searchArtists(): void {
     const searchValue = searchBar.value;
     const filterValue = filterBar.value;
 
-    const searchedArtists: Artist[] = artistsList.filter((artist) => artist.name.toLowerCase().includes(searchValue.toLowerCase()));
+    let searchedArtists: Artist[] = artistsList.filter((artist) => artist.name.toLowerCase().includes(searchValue.toLowerCase()));
 
-    //If a filter is applied, go to the filer
-    //Else, skip to sorting
+    //If a filter is applied, filter the searchedArtists by the filter-value.
+    //Then return the value and overwrite the old variable value.
     if (filterValue !== "none") {
-        filterArtists(searchedArtists);
-    } else {
-        sortArtists(searchedArtists);
-    }
+        searchedArtists = filterArtists(searchedArtists);
+    } 
+    
+    //Lastly, sort artists
+    sortArtists(searchedArtists);
 }
 
-function filterArtists(artistsToFilter: Artist[]): void {
+function filterArtists(artistsToFilter: Artist[]): Artist[] {
     //Filters by the filter-value
     const filterBar = document.querySelector("#filter") as HTMLSelectElement;
     const filterValue = filterBar.value;
 
     const filteredArtists: Artist[] = filter(artistsToFilter, filterValue);
 
-    sortArtists(filteredArtists);
+    return filteredArtists;
 }
 
 function filter(artistsToFilter: Artist[], filterValue: string): Artist[] {

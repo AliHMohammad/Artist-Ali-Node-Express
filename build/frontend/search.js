@@ -7,22 +7,21 @@ function searchArtists() {
     const filterBar = document.querySelector("#filter");
     const searchValue = searchBar.value;
     const filterValue = filterBar.value;
-    const searchedArtists = artistsList.filter((artist) => artist.name.toLowerCase().includes(searchValue.toLowerCase()));
-    //If a filter is applied, go to the filer
-    //Else, skip to sorting
+    let searchedArtists = artistsList.filter((artist) => artist.name.toLowerCase().includes(searchValue.toLowerCase()));
+    //If a filter is applied, filter the searchedArtists by the filter-value.
+    //Then return the value and overwrite the old variable value.
     if (filterValue !== "none") {
-        filterArtists(searchedArtists);
+        searchedArtists = filterArtists(searchedArtists);
     }
-    else {
-        sortArtists(searchedArtists);
-    }
+    //Lastly, sort artists
+    sortArtists(searchedArtists);
 }
 function filterArtists(artistsToFilter) {
     //Filters by the filter-value
     const filterBar = document.querySelector("#filter");
     const filterValue = filterBar.value;
     const filteredArtists = filter(artistsToFilter, filterValue);
-    sortArtists(filteredArtists);
+    return filteredArtists;
 }
 function filter(artistsToFilter, filterValue) {
     if (filterValue === "female" || filterValue === "male" || filterValue === "other") {

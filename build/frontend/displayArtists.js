@@ -30,11 +30,12 @@ function showArtist(artist) {
 }
 async function showDetailsArtist(artistID) {
     //Fetch artist based on the artistID recieved.
-    //The now fetched artist is used to populate the detailed view dialog.
     const artist = await getArtist(artistID);
     console.log(artist);
-    clearDialogWindow();
-    const html = /*html*/ `
+    //If artist is defined, and not "undefined", create DOM and view dialog
+    if (artist) {
+        clearDialogWindow();
+        const html = /*html*/ `
         <article class="artist-details-container">
 
             <div class="artist-details-btns">
@@ -58,11 +59,12 @@ async function showDetailsArtist(artistID) {
             </div>
 
         </article>
-    `;
-    document.querySelector("#dialog-display")?.insertAdjacentHTML("beforeend", html);
-    //Send artist to DELETE-request when clicking on "delete artist"-button
-    document.querySelector(".artist-details-delete-artist")?.addEventListener("click", async () => await deleteArtist(artist));
-    document.querySelector(".artist-details-update-artist")?.addEventListener("click", () => displayUpdateArtistForm(artist));
-    openDialogWindow();
+        `;
+        document.querySelector("#dialog-display")?.insertAdjacentHTML("beforeend", html);
+        //Send artist to DELETE-request when clicking on "delete artist"-button
+        document.querySelector(".artist-details-delete-artist")?.addEventListener("click", async () => await deleteArtist(artist));
+        document.querySelector(".artist-details-update-artist")?.addEventListener("click", () => displayUpdateArtistForm(artist));
+        openDialogWindow();
+    }
 }
 export { showArtists };
