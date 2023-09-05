@@ -41,7 +41,7 @@ button:hover {
 
 .artist-grid-container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 2rem;
 }
 
@@ -122,4 +122,40 @@ button:hover {
 
 .hidden {
     display: none;
+}
+
+.name-title {
+    font-size: large;
+}
+
+/*=== MEDIA QUERIES ===*/
+
+@media (min-width: 700px){
+    .artist-grid-container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (min-width: 1100px){
+   .artist-grid-container {
+        grid-template-columns: 1fr 1fr 1fr;
+    } 
+}
+
+@media (min-width: 1500px){
+    .artist-grid-container {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}
+
+@media (min-width: 1900px){
+    .artist-grid-container {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
+}
+
+@media (min-width: 2300px){
+    .artist-grid-container {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
 }

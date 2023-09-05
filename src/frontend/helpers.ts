@@ -16,8 +16,6 @@ function clearDialogWindow(): void {
     document.querySelector("#dialog-display")!.innerHTML="";
 }
 
-
-
 function initiateEventListeners(): void {
     document.querySelector("#dialog-close-btn")?.addEventListener("click", closeDialogWindow);
     document.querySelector("#search-bar")?.addEventListener("input", searchArtists);
