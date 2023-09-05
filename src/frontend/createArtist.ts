@@ -88,7 +88,7 @@ async function submitCreateArtistForm(event: Event): Promise<void> {
 
     console.log(newArtist);
     
-    await createArtist(newArtist)
+    await createArtist(newArtist);
 }
 
 
