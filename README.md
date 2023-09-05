@@ -17,3 +17,5 @@ For at anvende app'en skal serveren køre. Skriv nedenstående i git bash for at
 ```bash
 npm run server
 ```
+
+Dernæst kør live-server ud fra index.html.
