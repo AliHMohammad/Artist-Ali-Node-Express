@@ -48,7 +48,7 @@ async function showDetailsArtist(artistID) {
             </div>
 
             <div class="artist-details-information">
-                <p class="bold center">${artist.name}</p>
+                <p class="bold center artist-name-detailed-view">${artist.name}</p>
                 <p>Gender: ${artist.gender}</p>
                 <p>Born ${artist.birthdate}</p>
                 <p>Active since ${artist.activeSince}</p>

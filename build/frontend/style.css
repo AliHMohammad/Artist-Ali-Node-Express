@@ -13,6 +13,9 @@ dialog {
 textarea {
     resize: none;
 }
+p {
+    font-family: 'Nunito', sans-serif;
+}
 
 footer h2 {
     margin: 0;
@@ -87,6 +90,11 @@ button:hover {
     height: 25rem;
 }
 
+.artist-name-detailed-view{
+    font-size: x-large;
+    margin-top: 0;
+}
+
 /*=== FORM ===*/
 
 #create-artist-form-container,
@@ -127,6 +135,7 @@ button:hover {
 .name-title {
     font-size: large;
 }
+
 
 /*=== MEDIA QUERIES ===*/
 
