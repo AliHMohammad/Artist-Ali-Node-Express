@@ -13,8 +13,14 @@ dialog {
 textarea {
     resize: none;
 }
-p {
+p, label {
     font-family: 'Nunito', sans-serif;
+}
+
+h1 {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 3rem;
+    margin-bottom: 5rem;
 }
 
 footer h2 {
