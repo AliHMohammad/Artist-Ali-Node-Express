@@ -40,19 +40,19 @@ function sortArtists(artistsToSort) {
         isToReverse = true;
         sortValue = sortValue.split("-")[0];
     }
-    let sortedArtists = sort(artistsToSort, sortValue);
+    sort(artistsToSort, sortValue);
     if (isToReverse) {
-        sortedArtists.reverse();
+        artistsToSort.reverse();
     }
     //The result-arr is then displayed in the html
-    showArtists(sortedArtists);
+    showArtists(artistsToSort);
 }
 function sort(artistsToSort, sortValue) {
     if (sortValue === "name") {
-        return artistsToSort.toSorted((a, b) => a.name.localeCompare(b.name));
+        artistsToSort.sort((a, b) => a.name.localeCompare(b.name));
     }
     else {
-        return artistsToSort.toSorted((a, b) => a.activeSince - b.activeSince);
+        artistsToSort.sort((a, b) => a.activeSince - b.activeSince);
     }
 }
 export { searchArtists };

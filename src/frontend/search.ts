@@ -54,22 +54,22 @@ function sortArtists(artistsToSort: Artist[]): void {
         sortValue = sortValue.split("-")[0];
     }
 
-    let sortedArtists: Artist[] = sort(artistsToSort, sortValue);
+    sort(artistsToSort, sortValue);
 
     if (isToReverse) {
-        sortedArtists.reverse();
+        artistsToSort.reverse();
     }
 
     //The result-arr is then displayed in the html
-    showArtists(sortedArtists);
+    showArtists(artistsToSort);
 }
 
-function sort(artistsToSort: Artist[], sortValue: string): Artist[] {
+function sort(artistsToSort: Artist[], sortValue: string) {
 
     if (sortValue === "name") {
-        return artistsToSort.toSorted((a, b) => a.name.localeCompare(b.name));
+        artistsToSort.sort((a: Artist, b: Artist) => a.name.localeCompare(b.name));
     } else {
-        return artistsToSort.toSorted((a, b) => a.activeSince - b.activeSince);
+        artistsToSort.sort((a: Artist, b: Artist) => a.activeSince - b.activeSince);
     }
 }
 
