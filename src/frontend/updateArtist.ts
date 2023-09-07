@@ -2,13 +2,10 @@ import { updateArtist } from "./api.js";
 import { clearDialogWindow } from "./helpers.js";
 import { Artist } from "./interface.js";
 
-let artistID: number | undefined;
-
 
 function displayUpdateArtistForm(artist: Artist): void {
     //Displays an update form in html.
     clearDialogWindow();
-    artistID = artist.id;
     const html = /*html*/ `
         <h2 class="center">Update Artist</h2>
         <form id="update-artist-form">
@@ -68,10 +65,10 @@ function displayUpdateArtistForm(artist: Artist): void {
     radioCheckCorrectGender(artist.gender);
     radioCheckCorrectIsFavorite(artist.isFavorite);
 
-    document.querySelector("#update-artist-form")?.addEventListener("submit", submitUpdateArtistForm);
+    document.querySelector("#update-artist-form")?.addEventListener("submit", (event) => submitUpdateArtistForm(event, artist.id));
 }
 
-async function submitUpdateArtistForm(event: Event): Promise<void> {
+async function submitUpdateArtistForm(event: Event, artistID: number | undefined): Promise<void> {
     //After submitting the update artist form, gather the input value in a updatedArtist object.
     //Send updatedArtist in the updateArtist PUT-request
     event.preventDefault();

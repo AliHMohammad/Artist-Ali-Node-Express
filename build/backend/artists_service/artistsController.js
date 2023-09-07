@@ -1,78 +1,57 @@
-import express, { Request, Response } from "express";
-import { Artist } from "../frontend/interface";
-import { readArtists, writeArtists } from "./backendHelpers.js";
-
-const router = express.Router();
-
-router.get("/", async (request: Request, response: Response) => {
-    //Get all artists from artists.json
+import { readArtists, writeArtists } from "./artistsModel.js";
+async function getAllArtists(request, response) {
     const artists = await readArtists();
-    console.log(artists);
+    // console.log(artists);
     response.status(200).json(artists);
-});
-
-router.get("/:id", async (request: Request, response: Response) => {
-    //Get a single artist by id from artists.json
+}
+async function getSingleArtist(request, response) {
     const id = Number(request.params.id);
     const artists = await readArtists();
-
     const artist = artists.find((artist) => artist.id === id);
-
     //If arist is found, send 200. Else, send 404
     if (artist) {
         response.status(200).json(artist);
-    } else {
+    }
+    else {
         response.status(404).json({ error: "Could not get specific artist from database" });
     }
-});
-
-router.post("/", async (request: Request, response: Response) => {
-    //Create a artist in artists.json
-    const newArtist: Artist = request.body;
+}
+async function createArtist(request, response) {
+    const newArtist = request.body;
     console.log(newArtist);
     newArtist.id = new Date().getTime();
-
     const artists = await readArtists();
-
     const alreadyExists = artists.find((artist) => artist.name.toLowerCase() === newArtist.name.toLowerCase());
-
     //If artist's name already exists in the database, then send 400. Else, Push the newArtist, update local JSON-file and send 201
     if (alreadyExists) {
         response.status(400).json({ error: "Artist trying to create already exists in database" });
-    } else {
+    }
+    else {
         artists.push(newArtist);
         writeArtists(artists);
         response.status(201).json(artists);
     }
-});
-
-router.delete("/:id", async (request: Request, response: Response) => {
-    //Delete a single artist by id from artists.json
+}
+async function deleteArtist(request, response) {
     const id = Number(request.params.id);
     const artists = await readArtists();
-
     const index = artists.findIndex((artist) => artist.id === id);
-
     //If firstIndex could not find a matching id, then send 404
     //Else, remove the artist on index-place and send 200
     if (index === -1) {
         response.status(404).json({ error: "Could not delete specified artist from database" });
-    } else {
+    }
+    else {
         artists.splice(index, 1);
         writeArtists(artists);
         response.status(200).json(artists);
     }
-});
-
-router.put("/:id", async (request: Request, response: Response) => {
-    //Update a single artist by id from artists.json
+}
+async function updateArtist(request, response) {
     const artists = await readArtists();
-    const updatedArtist: Artist = request.body;
-
+    const updatedArtist = request.body;
     let artistToUpdate = artists.find((artist) => artist.id === updatedArtist.id);
-
     console.log(updatedArtist);
-
     //If artistToUpdate exists, update its properties and send 200
     //Else, send 404
     if (artistToUpdate) {
@@ -86,12 +65,11 @@ router.put("/:id", async (request: Request, response: Response) => {
         artistToUpdate.image = updatedArtist.image;
         artistToUpdate.shortDescription = updatedArtist.shortDescription;
         artistToUpdate.isFavorite = updatedArtist.isFavorite;
-
         writeArtists(artists);
         response.status(200).json(artists);
-    } else {
+    }
+    else {
         response.status(404).json({ error: "Could not find artist from database" });
     }
-});
-
-export { router };
+}
+export { getAllArtists, getSingleArtist, createArtist, deleteArtist, updateArtist };

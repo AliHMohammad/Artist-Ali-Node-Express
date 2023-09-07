@@ -1,10 +1,8 @@
 import { updateArtist } from "./api.js";
 import { clearDialogWindow } from "./helpers.js";
-let artistID;
 function displayUpdateArtistForm(artist) {
     //Displays an update form in html.
     clearDialogWindow();
-    artistID = artist.id;
     const html = /*html*/ `
         <h2 class="center">Update Artist</h2>
         <form id="update-artist-form">
@@ -62,9 +60,9 @@ function displayUpdateArtistForm(artist) {
     document.querySelector("#dialog-display")?.insertAdjacentHTML("beforeend", html);
     radioCheckCorrectGender(artist.gender);
     radioCheckCorrectIsFavorite(artist.isFavorite);
-    document.querySelector("#update-artist-form")?.addEventListener("submit", submitUpdateArtistForm);
+    document.querySelector("#update-artist-form")?.addEventListener("submit", (event) => submitUpdateArtistForm(event, artist.id));
 }
-async function submitUpdateArtistForm(event) {
+async function submitUpdateArtistForm(event, artistID) {
     //After submitting the update artist form, gather the input value in a updatedArtist object.
     //Send updatedArtist in the updateArtist PUT-request
     event.preventDefault();

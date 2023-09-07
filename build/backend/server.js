@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import { router as artistRouter } from "./artists.js";
+import { router as artistRouter } from "./artists_service/artistsRoutes.js";
 const app = express();
 const port = 3333;
 app.use(express.json());
